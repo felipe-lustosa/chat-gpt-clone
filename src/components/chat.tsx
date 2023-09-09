@@ -32,7 +32,6 @@ const Chat = (props: any) => {
 
   const sendMessage = async (e: any) => {
     e.preventDefault();
-    const message = e.target.value
 
     if (message.length < 1) {
       setErrorMessage("Please enter a message.");
@@ -93,7 +92,7 @@ const Chat = (props: any) => {
             <div className="h-full dark:bg-gray-800">
               {!showEmptyChat && conversation.length > 0 ? (
                 <div className="flex flex-col items-center text-sm bg-gray-800">
-                  <div className="flex w-full items-center justify-center gap-1 border-b border-black/10 bg-gray-50 p-3 text-gray-500 dark:border-gray-900/50 dark:bg-gray-700 dark:text-gray-300">
+                  <div className="flex w-full items-center justify-center gap-1 border-b border-black/10 bg-gray-50 p-3 text-gray-500 dark:border-gray-900/50 dark:bg-gray-800 dark:text-gray-300 py-5 text-sm">
                     Default (GPT-3.5)
                   </div>
                   {conversation.map((message, index) => (
