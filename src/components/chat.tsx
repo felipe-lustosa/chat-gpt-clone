@@ -9,7 +9,6 @@ import useAutoResizeTextArea from "@/hooks/useAutoResizeTextArea";
 
 const Chat = (props: any) => {
   const { toggleComponentVisibility } = props;
-
   const [errorMessage, setErrorMessage] = useState("");
   const [showEmptyChat, setShowEmptyChat] = useState(true);
   const [conversation, setConversation] = useState<any[]>([]);
@@ -40,30 +39,24 @@ const Chat = (props: any) => {
       setErrorMessage("");
     }
 
-    // trackEvent("send.message", { message: message });
-    // setIsLoading(true);
-
-    // Add the message to the conversation
     setConversation([
       ...conversation,
       { content: message, role: "user" },
       { content: null, role: "system" },
     ]);
 
-    // Clear the message & remove empty chat
     setMessage("");
     setShowEmptyChat(false);
 
-        // Add the message to the conversation
-      setConversation([
-        ...conversation,
-        { content: message, role: "user" },
-        { content: 'Texto gerado pelo gpt', role: "system" },
-      ]);
+    setConversation([
+      ...conversation,
+      { content: message, role: "user" },
+      { content: 'Texto gerado pelo gpt', role: "system" },
+    ]);
   };
 
   const handleKeypress = (e: any) => {
-    // It's triggers by pressing the enter key
+    // Enviar mensagem ao apertar enter, no lugar de pular a linha
     if (e.keyCode == 13 && !e.shiftKey) {
       sendMessage(e);
       e.preventDefault();
@@ -89,7 +82,7 @@ const Chat = (props: any) => {
       <div className="relative overflow-hidden scroll-auto h-full w-full transition-width flex flex-col items-stretch flex-1">
         <div className="flex-1 overflow-hidden">
           <div className="react-scroll-to-bottom--css-ikyem-1n7m0yu">
-            <div className="h-full dark:bg-gray-800">
+            <div className="h-full dark:bg-gray-800 flex flex-col justify-between">
               {!showEmptyChat && conversation.length > 0 ? (
                 <div className="flex flex-col items-center text-sm bg-gray-800">
                   <div className="flex w-full items-center justify-center gap-1 border-b border-black/10 bg-gray-50 p-3 text-gray-500 dark:border-gray-900/50 dark:bg-gray-800 dark:text-gray-300 py-5 text-sm">
@@ -98,7 +91,7 @@ const Chat = (props: any) => {
                   {conversation.map((message, index) => (
                     <Message key={index} message={message} />
                   ))}
-                  <div className="w-full h-32 md:h-48 flex-shrink-0"></div>
+                  {/* <div className="w-full h-32 md:h-48 flex-shrink-0"></div> */}
                   <div ref={bottomOfChatRef}></div>
                 </div>
               ) : null}
@@ -127,7 +120,7 @@ const Chat = (props: any) => {
                   <h1 className="text-2xl sm:text-4xl font-semibold text-center text-gray-200 dark:text-gray-600 flex gap-2 items-start justify-center mt-16 h-full">
                     ChatGPT
                   </h1>
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full pb-16 md:pb-24 xl:pb-20 text-gray-500 lg:max-w-2xl xl:max-w-3xl">
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full -mb-8 text-gray-500 lg:max-w-2xl xl:max-w-3xl">
                     <li className="border border-gray-500/50 rounded-xl px-3 py-2 hover:bg-gray-700 cursor-pointer text-sm truncate">
                       <h3 className="font-semibold">Give me ideas</h3>
                       <span className="opacity-50">for what to do with my kids art</span>
@@ -147,48 +140,48 @@ const Chat = (props: any) => {
                   </ul>
                 </div>
               ) : null}
-            </div>
-          </div>
-          <div className="absolute bottom-0 left-0 w-full border-t md:border-t-0 dark:border-white/20 md:border-transparent md:dark:border-transparent md:bg-vert-light-gradient bg-white dark:bg-gray-800 md:!bg-transparent dark:md:bg-vert-dark-gradient pt-2">
-            <form className="stretch mx-2 flex flex-row gap-3 last:mb-2 md:mx-4 md:last:mb-6 lg:mx-auto lg:max-w-2xl xl:max-w-3xl">
-              <div className="relative flex flex-col h-full flex-1 items-stretch md:flex-col">
-                {errorMessage ? (
-                  <div className="mb-2 md:mb-0">
-                    <div className="h-full flex ml-1 md:w-full md:m-auto md:mb-2 gap-0 md:gap-2 justify-center">
-                      <span className="text-red-500 text-sm">{errorMessage}</span>
+              <div className="w-full justify-self-end border-t md:border-t-0 dark:border-white/20 bg-white dark:bg-gray-800 pt-2">
+                <form className="mx-2 flex flex-row gap-3 last:mb-2 md:mx-4 md:last:mb-6 lg:mx-auto lg:max-w-2xl xl:max-w-3xl">
+                  <div className="relative flex flex-col h-full flex-1 md:flex-col">
+                    {errorMessage ? (
+                      <div className="mb-2 md:mb-0">
+                        <div className="h-full flex ml-1 md:w-full md:m-auto md:mb-2 gap-0 md:gap-2 justify-center">
+                          <span className="text-red-500 text-sm">{errorMessage}</span>
+                        </div>
+                      </div>
+                    ) : null}
+                    <div className="flex flex-col justify-center w-full flex-grow py-2 md:py-4 md:pl-4 relative border border-black/10 bg-white dark:border-gray-900/50 dark:text-white dark:bg-gray-700 rounded-xl shadow-[0_0_10px_rgba(0,0,0,0.10)] dark:shadow-[0_0_15px_rgba(0,0,0,0.10)]">
+                      <textarea
+                        ref={textAreaRef}
+                        value={message}
+                        tabIndex={0}
+                        style={{
+                          height: "24px",
+                          maxHeight: "200px",
+                          overflowY: "hidden",
+                        }}
+                        // rows={1}
+                        placeholder="Send a message"
+                        className="m-0 w-full resize-none border-0 bg-transparent placeholder:text-gray-400/60 p-0 pr-10 focus:ring-0 focus-visible:ring-0 dark:bg-transparent pl-3 md:pl-0 text-sm pt-0.5"
+                        onChange={(e) => setMessage(e.target.value)}
+                        onKeyDown={handleKeypress}
+                      ></textarea>
+                      <button
+                        onClick={sendMessage}
+                        className="absolute p-1 rounded-md bg-transparent disabled:bg-gray-500 right-1 md:right-2 disabled:opacity-40"
+                      >
+                        <BiSolidSend className="h-5 w-5 mr-1  text-gray-600" />
+                      </button>
+                    </div>
+                    <div className="px-3 pt-2 text-center text-xs text-black/50 dark:text-white/80 md:px-4 md:pt-3">
+                      <span>
+                        Free Research Preview. ChatGPT may produce inaccurate information about people, places, or facts. <span className="underline cursor-pointer">ChatGPT August 3 Version</span>
+                      </span>
                     </div>
                   </div>
-                ) : null}
-                <div className="flex flex-col justify-center w-full flex-grow py-2 md:py-4 md:pl-4 relative border border-black/10 bg-white dark:border-gray-900/50 dark:text-white dark:bg-gray-700 rounded-xl shadow-[0_0_10px_rgba(0,0,0,0.10)] dark:shadow-[0_0_15px_rgba(0,0,0,0.10)]">
-                  <textarea
-                    ref={textAreaRef}
-                    value={message}
-                    tabIndex={0}
-                    style={{
-                      height: "24px",
-                      maxHeight: "200px",
-                      overflowY: "hidden",
-                    }}
-                    // rows={1}
-                    placeholder="Send a message"
-                    className="m-0 w-full resize-none border-0 bg-transparent placeholder:text-gray-400/60 p-0 pr-10 focus:ring-0 focus-visible:ring-0 dark:bg-transparent pl-3 md:pl-0 text-sm pt-0.5"
-                    onChange={(e) => setMessage(e.target.value)}
-                    onKeyDown={handleKeypress}
-                  ></textarea>
-                  <button
-                    onClick={sendMessage}
-                    className="absolute p-1 rounded-md bg-transparent disabled:bg-gray-500 right-1 md:right-2 disabled:opacity-40"
-                  >
-                    <BiSolidSend className="h-5 w-5 mr-1  text-gray-600" />
-                  </button>
-                </div>
-                <div className="px-3 pt-2 text-center text-xs text-black/50 dark:text-white/80 md:px-4 md:pt-3">
-                  <span>
-                    Free Research Preview. ChatGPT may produce inaccurate information about people, places, or facts. <span className="underline cursor-pointer">ChatGPT August 3 Version</span>
-                  </span>
-                </div>
+                </form>
               </div>
-            </form>
+            </div>
           </div>
         </div>
       </div>
