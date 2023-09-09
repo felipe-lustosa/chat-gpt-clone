@@ -32,8 +32,8 @@ const Chat = (props: any) => {
 
   const sendMessage = async (e: any) => {
     e.preventDefault();
+    const message = e.target.value
 
-    // Don't send empty messages
     if (message.length < 1) {
       setErrorMessage("Please enter a message.");
       return;
@@ -55,40 +55,12 @@ const Chat = (props: any) => {
     setMessage("");
     setShowEmptyChat(false);
 
-    try {
-      // const response = await fetch(`/api/openai`, {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify({
-      //     messages: [...conversation, { content: message, role: "user" }],
-      //     model: selectedModel,
-      //   }),
-      // });
-      const response = {}
-
-      if (response.ok) {
-        const data = await response.json();
-
         // Add the message to the conversation
-        setConversation([
-          ...conversation,
-          { content: message, role: "user" },
-          { content: data.message, role: "system" },
-        ]);
-      } else {
-        console.error(response);
-        setErrorMessage(response.statusText);
-      }
-
-      // setIsLoading(false);
-    } catch (error: any) {
-      console.error(error);
-      setErrorMessage(error.message);
-
-      // setIsLoading(false);
-    }
+      setConversation([
+        ...conversation,
+        { content: message, role: "user" },
+        { content: 'Texto gerado pelo gpt', role: "system" },
+      ]);
   };
 
   const handleKeypress = (e: any) => {
