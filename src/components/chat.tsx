@@ -7,8 +7,10 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import Message from "./message";
 import useAutoResizeTextArea from "@/hooks/useAutoResizeTextArea";
 
-const Chat = (props: any) => {
-  const { toggleComponentVisibility } = props;
+type ChatProps = {
+}
+
+const Chat = ({}: ChatProps) => {
   const [errorMessage, setErrorMessage] = useState("");
   const [showEmptyChat, setShowEmptyChat] = useState(true);
   const [conversation, setConversation] = useState<any[]>([]);
@@ -16,6 +18,7 @@ const Chat = (props: any) => {
   const textAreaRef = useAutoResizeTextArea();
   const bottomOfChatRef = useRef<HTMLDivElement>(null);
 
+  //Aumentar altura do input de acordo com quantidade de linhas
   useEffect(() => {
     if (textAreaRef.current) {
       textAreaRef.current.style.height = "24px";
@@ -23,6 +26,7 @@ const Chat = (props: any) => {
     }
   }, [message, textAreaRef]);
 
+  //scroll quando uma mensagem for adicionada no final do chat
   useEffect(() => {
     if (bottomOfChatRef.current) {
       bottomOfChatRef.current.scrollIntoView({ behavior: "smooth" });
@@ -55,8 +59,8 @@ const Chat = (props: any) => {
     ]);
   };
 
+  // Enviar mensagem ao apertar enter, no lugar de pular a linha
   const handleKeypress = (e: any) => {
-    // Enviar mensagem ao apertar enter, no lugar de pular a linha
     if (e.keyCode == 13 && !e.shiftKey) {
       sendMessage(e);
       e.preventDefault();
@@ -69,7 +73,6 @@ const Chat = (props: any) => {
         <button
           type="button"
           className="-ml-0.5 -mt-0.5 inline-flex h-10 w-10 items-center justify-center rounded-md hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white dark:hover:text-white"
-          onClick={toggleComponentVisibility}
         >
           <span className="sr-only">Open sidebar</span>
           <RxHamburgerMenu className="h-6 w-6 text-white" />

@@ -1,8 +1,14 @@
 import { SiOpenai } from "react-icons/si";
 import { HiUser } from "react-icons/hi";
 
-const Message = (props: any) => {
-  const { message } = props;
+type MessageProps = {
+  message: {
+    role: string;
+    content: string;
+  }
+}
+
+const Message = ({message}: MessageProps) => {
   const { role, content: text } = message;
 
   const isUser = role === "user";
@@ -25,14 +31,8 @@ const Message = (props: any) => {
             </div>
           </div>
           <div className="relative flex w-[calc(100%-50px)] flex-col gap-1 md:gap-3 lg:w-[calc(100%-115px)]">
-            <div className="flex flex-grow flex-col gap-3">
-              <div className="min-h-20 flex flex-col items-start gap-4 whitespace-pre-wrap break-words">
-                  {!isUser && text === null ? (
-                    <p>{message}</p>
-                  ) : (
-                    <p>{text}</p>
-                  )}
-              </div>
+            <div className="min-h-20 flex flex-col items-start gap-4 whitespace-pre-wrap break-words">
+                <p>{text}</p>
             </div>
           </div>
         </div>
