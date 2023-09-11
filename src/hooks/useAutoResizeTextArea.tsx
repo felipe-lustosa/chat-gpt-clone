@@ -1,5 +1,6 @@
 import { useRef, useEffect } from "react";
 
+//Resize input area when in a new line
 function useAutoResizeTextArea() {
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
