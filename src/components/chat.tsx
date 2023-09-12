@@ -72,7 +72,7 @@ const Chat = ({}: ChatProps) => {
       <div className="sticky top-0 z-10 flex items-center border-b border-white/20 bg-gray-800 pl-1 pt-1 text-gray-200 sm:pl-3 md:hidden">
         <button
           type="button"
-          className="-ml-0.5 -mt-0.5 inline-flex h-10 w-10 items-center justify-center rounded-md hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white dark:hover:text-white"
+          className="-ml-0.5 -mt-0.5 inline-flex h-10 w-10 items-center justify-center rounded-md focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white hover:text-white"
         >
           <span className="sr-only">Open sidebar</span>
           <RxHamburgerMenu className="h-6 w-6 text-white" />
@@ -84,12 +84,12 @@ const Chat = ({}: ChatProps) => {
       </div>
       <div className="relative overflow-hidden scroll-auto h-full w-full transition-width flex flex-col items-stretch flex-1">
         <div className="flex-1 overflow-hidden">
-          <div className="react-scroll-to-bottom--css-ikyem-79elbk h-full dark:bg-gray-800">
+          <div className="react-scroll-to-bottom--css-ikyem-79elbk h-full bg-gray-800">
             <div className="react-scroll-to-bottom--css-ikyem-1n7m0yu">
-              <div className="h-full dark:bg-gray-800 flex flex-col justify-between">
+              <div className="h-full bg-gray-800 flex flex-col justify-between">
                 {!showEmptyChat && conversation.length > 0 ? (
                   <div className="flex flex-col items-center text-sm bg-gray-800">
-                    <div className="flex w-full items-center justify-center gap-1 border-b border-black/10 bg-gray-50 p-3 text-gray-500 dark:border-gray-900/50 dark:bg-gray-800 dark:text-gray-300 py-5 text-sm">
+                    <div className="flex w-full items-center justify-center gap-1 border-b bg-gray-50 p-3 border-gray-900/50 bg-gray-800 text-gray-300 py-5 text-sm">
                       Default (GPT-3.5)
                     </div>
                     {conversation.map((message, index) => (
@@ -103,11 +103,11 @@ const Chat = ({}: ChatProps) => {
                   <div className="py-10 px-2 relative w-full flex flex-col h-full items-center">
                     <div className="flex items-center justify-center gap-2 relative w-full md:w-1/2 lg:w-1/3 xl:w-1/4">
                       <button
-                        className="relative flex w-full cursor-default flex-col rounded-md border border-black/10 bg-white py-2 pl-3 pr-10 text-left focus:border-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 dark:border-white/20 dark:bg-gray-800 sm:text-sm align-center"
+                        className="relative flex w-full cursor-default flex-col rounded-md border bg-white py-2 pl-3 pr-10 text-left focus:border-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 border-white/20 bg-gray-800 sm:text-sm align-center"
                         type="button"
                       >
                         <label
-                          className="block text-xs text-gray-700 dark:text-gray-500 text-center"
+                          className="block text-xs text-gray-500 text-center"
                           id="headlessui-listbox-label-:r1:"
                           data-headlessui-state=""
                         >
@@ -121,7 +121,7 @@ const Chat = ({}: ChatProps) => {
                         </span>
                       </button>
                     </div>
-                    <h1 className="text-2xl sm:text-4xl font-semibold text-center text-gray-200 dark:text-gray-600 flex gap-2 items-start justify-center mt-16 h-full">
+                    <h1 className="text-2xl sm:text-4xl font-semibold text-center text-gray-600 flex gap-2 items-start justify-center mt-16 h-full">
                       ChatGPT
                     </h1>
                     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full mb-16 md:mb-24 xl:mb-20 text-gray-500 lg:max-w-2xl xl:max-w-3xl">
@@ -145,7 +145,7 @@ const Chat = ({}: ChatProps) => {
                   </div>
                 ) : null}
               </div>
-            <div className="absolute bottom-0 left-0 w-full border-t md:border-t-0 dark:border-white/20 md:border-transparent md:dark:border-transparent md:bg-vert-light-gradient bg-white dark:bg-gray-800 md:!bg-transparent dark:md:bg-vert-dark-gradient pt-2">
+            <div className="absolute bottom-0 left-0 w-full border-t md:border-t-0 border-white/20 md:border-transparent md:bg-vert-light-gradient bg-gray-800 md:!bg-transparent md:bg-vert-dark-gradient pt-2">
                 <form className="mx-2 flex flex-row gap-3 last:mb-2 md:mx-4 md:last:mb-6 lg:mx-auto lg:max-w-2xl xl:max-w-3xl">
                   <div className="relative flex flex-col h-full flex-1 md:flex-col">
                     {errorMessage ? (
@@ -155,7 +155,7 @@ const Chat = ({}: ChatProps) => {
                         </div>
                       </div>
                     ) : null}
-                    <div className="flex flex-col justify-center w-full flex-grow py-2 md:py-4 md:pl-4 relative border border-black/10 bg-white dark:border-gray-900/50 dark:text-white dark:bg-gray-700 rounded-xl shadow-[0_0_10px_rgba(0,0,0,0.10)] dark:shadow-[0_0_15px_rgba(0,0,0,0.10)]">
+                    <div className="flex flex-col justify-center w-full flex-grow py-2 md:py-4 md:pl-4 relative border border-gray-900/50 text-white bg-gray-700 rounded-xl shadow-[0_0_15px_rgba(0,0,0,0.10)]">
                       <textarea
                         ref={textAreaRef}
                         value={message}
@@ -167,7 +167,7 @@ const Chat = ({}: ChatProps) => {
                         }}
                         // rows={1}
                         placeholder="Send a message"
-                        className="m-0 w-full resize-none border-0 bg-transparent placeholder:text-gray-400/60 p-0 pr-10 focus:ring-0 focus-visible:ring-0 dark:bg-transparent pl-3 md:pl-0 text-sm pt-0.5"
+                        className="m-0 w-full resize-none border-0 placeholder:text-gray-400/60 p-0 pr-10 focus:ring-0 focus-visible:ring-0 bg-transparent pl-3 md:pl-0 text-sm pt-0.5"
                         onChange={(e) => setMessage(e.target.value)}
                         onKeyDown={handleKeypress}
                       ></textarea>
@@ -178,7 +178,7 @@ const Chat = ({}: ChatProps) => {
                         <BiSolidSend className="h-5 w-5 mr-1  text-gray-600" />
                       </button>
                     </div>
-                    <div className="px-3 pt-2 text-center text-xs text-black/50 dark:text-white/80 md:px-4 md:pt-3">
+                    <div className="px-3 pt-2 text-center text-xs text-white/80 md:px-4 md:pt-3">
                       <span>
                         Free Research Preview. ChatGPT may produce inaccurate information about people, places, or facts. <span className="underline cursor-pointer">ChatGPT August 3 Version</span>
                       </span>
