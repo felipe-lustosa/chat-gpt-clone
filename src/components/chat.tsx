@@ -84,7 +84,8 @@ const Chat = ({}: ChatProps) => {
       </div>
       <div className="relative overflow-hidden scroll-auto h-full w-full transition-width flex flex-col items-stretch flex-1">
         <div className="flex-1 overflow-hidden">
-          <div className="react-scroll-to-bottom--css-ikyem-1n7m0yu">
+          <div className="react-scroll-to-bottom--css-ikyem-79elbk h-full dark:bg-gray-800">
+            <div className="react-scroll-to-bottom--css-ikyem-1n7m0yu">
             <div className="h-full dark:bg-gray-800 flex flex-col justify-between">
               {!showEmptyChat && conversation.length > 0 ? (
                 <div className="flex flex-col items-center text-sm bg-gray-800">
@@ -94,7 +95,7 @@ const Chat = ({}: ChatProps) => {
                   {conversation.map((message, index) => (
                     <Message key={index} message={message} />
                   ))}
-                  {/* <div className="w-full h-32 md:h-48 flex-shrink-0"></div> */}
+                  <div className="w-full h-32 md:h-32 flex-shrink-0"></div>
                   <div ref={bottomOfChatRef}></div>
                 </div>
               ) : null}
@@ -123,7 +124,7 @@ const Chat = ({}: ChatProps) => {
                   <h1 className="text-2xl sm:text-4xl font-semibold text-center text-gray-200 dark:text-gray-600 flex gap-2 items-start justify-center mt-16 h-full">
                     ChatGPT
                   </h1>
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full -mb-8 text-gray-500 lg:max-w-2xl xl:max-w-3xl">
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full mb-16 md:mb-24 xl:mb-20 text-gray-500 lg:max-w-2xl xl:max-w-3xl">
                     <li className="border border-gray-500/50 rounded-xl px-3 py-2 hover:bg-gray-700 cursor-pointer text-sm truncate">
                       <h3 className="font-semibold">Give me ideas</h3>
                       <span className="opacity-50">for what to do with my kids art</span>
@@ -143,7 +144,8 @@ const Chat = ({}: ChatProps) => {
                   </ul>
                 </div>
               ) : null}
-              <div className="w-full justify-self-end border-t md:border-t-0 dark:border-white/20 bg-white dark:bg-gray-800 pt-2">
+            </div>
+            <div className="absolute bottom-0 left-0 w-full border-t md:border-t-0 dark:border-white/20 md:border-transparent md:dark:border-transparent md:bg-vert-light-gradient bg-white dark:bg-gray-800 md:!bg-transparent dark:md:bg-vert-dark-gradient pt-2">
                 <form className="mx-2 flex flex-row gap-3 last:mb-2 md:mx-4 md:last:mb-6 lg:mx-auto lg:max-w-2xl xl:max-w-3xl">
                   <div className="relative flex flex-col h-full flex-1 md:flex-col">
                     {errorMessage ? (
