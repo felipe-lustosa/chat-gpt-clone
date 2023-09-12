@@ -68,7 +68,7 @@ const Chat = ({}: ChatProps) => {
   };
 
   return (
-    <div className="flex max-w-full flex-1 flex-col">
+    <div className="flex max-w-full max-h-[calc(100dvh)] flex-1 flex-col">
       <div className="sticky top-0 z-10 flex items-center border-b border-white/20 bg-gray-800 pl-1 pt-1 text-gray-200 sm:pl-3 md:hidden">
         <button
           type="button"
