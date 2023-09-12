@@ -82,7 +82,7 @@ const Chat = ({}: ChatProps) => {
           <BsPlusLg className="h-6 w-6" />
         </button>
       </div>
-      <div className="relative overflow-hidden scroll-auto h-[calc(100dvh)] w-full transition-width flex flex-col items-stretch flex-1">
+      <div className="relative overflow-hidden scroll-auto w-full transition-width flex flex-col items-stretch flex-1">
         <div className="flex-1 overflow-hidden">
           <div className="react-scroll-to-bottom--css-ikyem-79elbk h-full bg-gray-800">
             <div className="react-scroll-to-bottom--css-ikyem-1n7m0yu">
