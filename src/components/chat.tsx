@@ -82,7 +82,7 @@ const Chat = ({}: ChatProps) => {
           <BsPlusLg className="h-6 w-6" />
         </button>
       </div>
-      <div className="relative overflow-hidden scroll-auto h-full w-full transition-width flex flex-col items-stretch flex-1">
+      <div className="relative overflow-hidden scroll-auto h-[calc(100dvh)] w-full transition-width flex flex-col items-stretch flex-1">
         <div className="flex-1 overflow-hidden">
           <div className="react-scroll-to-bottom--css-ikyem-79elbk h-full bg-gray-800">
             <div className="react-scroll-to-bottom--css-ikyem-1n7m0yu">
@@ -103,7 +103,7 @@ const Chat = ({}: ChatProps) => {
                   <div className="py-10 px-2 relative w-full flex flex-col h-full items-center">
                     <div className="flex items-center justify-center gap-2 relative w-full md:w-1/2 lg:w-1/3 xl:w-1/4">
                       <button
-                        className="relative flex w-full cursor-default flex-col rounded-md border bg-white py-2 pl-3 pr-10 text-left focus:border-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 border-white/20 bg-gray-800 sm:text-sm align-center"
+                        className="relative flex w-full cursor-default flex-col rounded-md border py-2 pl-3 pr-10 text-left focus:border-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 border-white/20 bg-gray-800 sm:text-sm align-center"
                         type="button"
                       >
                         <label
