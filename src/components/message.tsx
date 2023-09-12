@@ -31,8 +31,12 @@ const Message = ({message}: MessageProps) => {
             </div>
           </div>
           <div className="relative flex w-[calc(100%-50px)] flex-col gap-1 md:gap-3 lg:w-[calc(100%-115px)]">
-            <div className="min-h-20 flex flex-col items-start gap-4 whitespace-pre-wrap break-words">
-                <p>{text}</p>
+            <div className="flex flex-grow flex-col gap-3">
+              <div className="min-h-20 flex flex-col items-start gap-4 whitespace-pre-wrap break-words">
+                <div className="markdown prose w-full break-words dark:prose-invert dark">
+                  <p>{text}</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
